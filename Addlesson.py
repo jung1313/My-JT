@@ -59,16 +59,16 @@ def paste_cursor(a):
     pag.click(x=783, y=955,duration=0.5)#save button
     time.sleep(0.5)
     pag.click(x=933, y=956,duration=0.7) # compile button
-    time.sleep(1.8)
+    time.sleep(3)
     pag.click(x=1842, y=754,duration=0.7) # Theme button
     pag.click(x=116, y=297,duration=1) # My Album
     pag.click(x=826, y=713,duration=1) # Unilabs Theme 
     pag.click(x=965, y=949,duration=1) # Add to Resource to List
     pag.click(x=964, y=622,duration=1) # Theme OK
     pag.click(x=783, y=955,duration=0.6)#save button
-    time.sleep(0.5)
-    pag.click(x=933, y=956,duration=1) # compile button
-    time.sleep(1.8)
+    time.sleep(0.3)
+    pag.click(x=933, y=956,duration=0.5) # compile button
+    time.sleep(25)
     pag.click(x=65, y=103,duration=1) # 戻るボタン
 
 
@@ -97,5 +97,5 @@ def paste_lesson(sheet_num):
         my_list=[]
         iii+=1
 
-add_lesson(8)
-paste_lesson(8)
+add_lesson(4)
+paste_lesson(4)

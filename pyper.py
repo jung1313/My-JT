@@ -9,12 +9,13 @@ from pathlib import Path
 def paste_translate(xx,yy):
     global ls_num
     ya=290+ls_num
-    pag.click(x=1538,y=ya, duration=0.5) #鉛筆ボタン
-    time.sleep(0.8) #編集画面入るまでの時間
+    pag.click(x=1536,y=ya, duration=0.7) #鉛筆ボタン
+    time.sleep(1.3) #編集画面入るまでの時間
     pag.click(1843,325,duration = 0.5) # Translation 選択
+    time.sleep(0.4)
     pag.click(454,271,duration=1) # 言語リスト選択
 
-    pag.click(xx,yy,duration=1) # 翻訳する言語位置選択
+    pag.click(xx,yy,duration=0.7) # 翻訳する言語位置選択
 
     pag.click(360,372,duration=1) #内容画面
     pag.hotkey('ctrl','a',duration=1)
@@ -23,13 +24,13 @@ def paste_translate(xx,yy):
     pag.hotkey('ctrl', 'v')
     pag.click(975,967,duration=0.5) #Preview
     pag.click(975,967,duration = 0.5) #save
-    time.sleep(0.4)
+    time.sleep(0.8)
     pag.click(781,953,duration = 0.5) #save
-    time.sleep(0.7)
+    time.sleep(0.9)
     pag.click(942,961,duration = 0.5) #compile
-    time.sleep(2)
+    time.sleep(3)
     pag.click(1149,952,duration = 0.5) #run
-    time.sleep(2.7)
+    time.sleep(3)
     #pag.click(82,442,duration = 0.5)#?
     pag.click(70,118,duration = 0.5)#戻る
     time.sleep(1)
@@ -37,8 +38,8 @@ def paste_translate(xx,yy):
     
 # save button の前後time入れること 
 
-sheet_num = 0
-file_path1 = "C:\\Users\\ウヨン\\Downloads\\製造業フレーズ_0316_翻訳入り_v4 チェック済1.xlsx"
+sheet_num = 2
+file_path1 = "C:\\Users\\ウヨン\\Downloads\\介護フレーズ_0410_翻訳修正_v6.xlsx"
 
 def select_sheet(s):
     
@@ -80,11 +81,11 @@ iii=0
 while not ws.cell(start_row , start_column).value is None and iii<=len(length) :
         
     #英語
-    quote_en.extend([B+ws.cell(start_row,start_column).value , ws.cell(start_row,eg_col).value , A+ws.cell(start_row,start_column).value , ws.cell(start_row,eg_col).value])
+    quote_en.extend([B+str(ws.cell(start_row,start_column).value) , str(ws.cell(start_row,eg_col).value) , A+str(ws.cell(start_row,start_column).value) , str(ws.cell(start_row,eg_col).value)])
     #ベトナム語
-    quote_vi.extend([B+ws.cell(start_row,start_column).value , ws.cell(start_row,vt_col).value , A+ws.cell(start_row,start_column).value , ws.cell(start_row,vt_col).value])
+    quote_vi.extend([B+str(ws.cell(start_row,start_column).value) , str(ws.cell(start_row,vt_col).value) , A+str(ws.cell(start_row,start_column).value) , str(ws.cell(start_row,vt_col).value)])
     #インドネシア語
-    quote_id.extend([B+ws.cell(start_row,start_column).value , ws.cell(start_row,id_col).value , A+ws.cell(start_row,start_column).value , ws.cell(start_row,id_col).value])
+    quote_id.extend([B+str(ws.cell(start_row,start_column).value) , str(ws.cell(start_row,id_col).value) , A+str(ws.cell(start_row,start_column).value) , str(ws.cell(start_row,id_col).value)])
 
     if (ws.cell(row = start_row , column = dif_col).value !=  ws.cell(row = start_row + 1 , column = dif_col).value):
         
@@ -101,7 +102,7 @@ while not ws.cell(start_row , start_column).value is None and iii<=len(length) :
         ls_num = iii*33
         paste_translate(418,394)
     
-        #インドネシア語
+        # #インドネシア語
         quoteline_id = "\n".join(quote_id)
         pyperclip.copy(quoteline_id)
         ls_num = iii*33
